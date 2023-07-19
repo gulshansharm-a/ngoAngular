@@ -1,0 +1,129 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title">Add {{this.toadd}}</h4>
+            <p class="card-category">Complete his/her profile</p>
+          </div>
+          <div class="card-body">
+            <form (ngSubmit)="uploadFormToDb()">
+              <div class="row">
+                <div class="col-md-3">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="AadharCard (Default)" disabled>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-3">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Aadhar Number"
+                      [(ngModel)]="aadharNumber">
+                  </mat-form-field>
+                </div>
+
+                <div class="col-md-4">
+
+                  Upload Aadhar <input type="file"
+                    (change)="onFileSelected($event , 'aadhar')">
+                  <div *ngIf="uploadProgress > 0">
+                    Uploading: {{ uploadProgress }}%
+
+                  </div>
+
+                </div>
+
+              </div>
+
+              <div class="row">
+                <div class="col-md-6">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Fist Name" type="text"
+                      [(ngModel)]="firstName">
+                  </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Last Name" type="text"
+                      [(ngModel)]="lastName">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Adress" type="text"
+                      [(ngModel)]="address">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Email" type="text"
+                      [(ngModel)]="email">
+                  </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Passwork" type="text"
+                      [(ngModel)]="password">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="City" type="text"
+                      [(ngModel)]="city">
+                  </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Area" type="text"
+                      [(ngModel)]="area">
+                  </mat-form-field>
+                </div>
+                <div class="col-md-4">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Postal Code" type="text">
+                  </mat-form-field>
+                </div>
+                Upload Profile
+                <input type="file" (change)="onFileSelected($event,'profile')">
+                <div *ngIf="uploadProgress > 0">
+                  Uploading: {{ uploadProgress }}%
+
+                </div>
+              </div>
+              <div class="row">
+
+              </div>
+              <button mat-raised-button type="submit"
+                class="btn btn-danger pull-right">Upload</button>
+              <div class="clearfix"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card card-profile">
+          <div class="card-avatar">
+            <a href="javascript:void(0)">
+              <img class="img" src="./assets/img/faces/marc.jpg" />
+            </a>
+          </div>
+          <div class="card-body">
+            <h6 class="card-category text-gray">{{self}} Level {{sub}} </h6>
+            <h4 class="card-title">Gulshan</h4>
+            <p class="card-description">
+              Don't be scared of the truth because we need to restart the human
+              foundation in truth And I love you like Kanye loves Kanye I love
+              Rick Owens’ bed design but the back is...
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
