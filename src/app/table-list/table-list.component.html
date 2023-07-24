@@ -28,21 +28,21 @@
                                   </th>
                               </thead>
                               <tbody>
-                                  <tr  *ngFor="let item of data$ | async">
-                                    <td class="text-primary">
-                                        ID
+                                  <tr   *ngFor="let item of data$ | async"  >
+                                    <td class="text-primary"  >
+                                        <a [routerLink]="'/list/' + item.uid + '/' + sub"> {{item.uid}} </a>
                                     </td>
                                       <td>
-                                          {{item.firstName}} {{item.lastName}}
+                                        <a [routerLink]="'/list/' + item.uid + '/' + sub">{{ item.firstName }} {{ item.lastName }}</a>                                     
+                                     </td>
+                                      <td>
+                                        <a [routerLink]="'/list/' + item.uid + '/' + sub">   {{item.email}} </a>
                                       </td>
                                       <td>
-                                          {{item.email}}
+                                        <a [routerLink]="'/list/' + item.uid + '/' + sub">  {{item.city}} </a>
                                       </td>
                                       <td>
-                                          {{item.city}}
-                                      </td>
-                                      <td>
-                                          {{item.area}}
+                                        <a [routerLink]="'/list/' + item.uid + '/' + sub">    {{item.area}} </a>
                                       </td>
                                       
                                   </tr>

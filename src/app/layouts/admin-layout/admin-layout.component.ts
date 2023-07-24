@@ -20,7 +20,14 @@ export class AdminLayoutComponent implements OnInit {
 
   ngOnInit() {
 
-    
+    setInterval(() => {
+        if(localStorage.getItem('uid') ==null) {
+          this.isLogin = false;
+          }else {
+            this.isLogin = true;
+          }
+      }, 500);
+      
       const isWindows = navigator.platform.indexOf('Win') > -1 ? true : false;
 
       if (isWindows && !document.getElementsByTagName('body')[0].classList.contains('sidebar-mini')) {
@@ -128,7 +135,11 @@ export class AdminLayoutComponent implements OnInit {
               $sidebar_responsive.css('background-image','url("' + new_image + '")');
           }
       });
-  }
+ 
+//end oninit 
+
+
+    }
   ngAfterViewInit() {
       this.runOnRouteChange();
   }

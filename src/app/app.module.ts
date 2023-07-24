@@ -15,13 +15,15 @@ import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { AngularFireModule } from '@angular/fire/compat';
 import { UserDataService } from 'app/user-data.service';
-
+import { LoginComponent } from './login/login.component'; // Add this line
+import { BalanceComponent } from './balance/balance.component';
 @NgModule({
   imports: [
     BrowserAnimationsModule,
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+
     ComponentsModule,
     AngularFireStorageModule,
     RouterModule,
@@ -37,6 +39,8 @@ import { UserDataService } from 'app/user-data.service';
   ],
   declarations: [
     AppComponent,
+    LoginComponent,
+    BalanceComponent,
     AdminLayoutComponent,
   ],
   providers: [UserDataService],

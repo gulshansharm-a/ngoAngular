@@ -1,11 +1,51 @@
+
 <div class="main-content">
     <div class="container-fluid">
+        <style>
+            .center-form {
+                
+    width: 50%;  /* You can adjust this value to suit your needs */
+    margin-left: auto;
+    margin-right: auto;
+
+}
+        </style>
+        <h3 > <b> Balance  </b> Rs.{{balance}} </h3>
+        <form class="center-form" (ngSubmit)="addBalance()">
+            <div class="form-row align-items-center">
+                <div class="col-auto">
+                    <input type="text" [(ngModel)]="uid"  class="form-control mb-2"
+                        id="inlineFormInput" placeholder="UID">
+                </div>
+                <div class="col-auto">
+                    <div class="input-group mb-2">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">Rs</div>
+                        </div>
+                        <input  [(ngModel)]="amount"  type="text" class="form-control"
+                            id="inlineFormInputGroup" placeholder="Amount">
+                    </div>
+                </div>
+                <div class="col-auto">
+                    <div class="form-check mb-2">
+                        <input class="form-check-input" type="checkbox"
+                            id="autoSizingCheck">
+
+                    </div>
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-primary mb-2">Send</button>
+                </div>
+            </div>
+        </form>
         <div class="row">
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header card-header-danger">
-                        <h4 class="card-title "> {{sub}} Table</h4>
-                        <p class="card-category"> All users at {{sub}} level are listed below</p>
+
+                        <h3 class="card-title ">
+                            Previous tranactions
+                        </h3>
                     </div>
                     <div class="card-body">
                         <div class="table-responsive">
@@ -15,36 +55,26 @@
                                         ID
                                     </th>
                                     <th>
-                                        Name
+                                        Amout
                                     </th>
                                     <th>
-                                      email
+                                        email
                                     </th>
-                                    <th>
-                                        City
-                                    </th>
-                                    <th>
-                                        DOJ
-                                    </th>
+                                   
                                 </thead>
                                 <tbody>
                                     <tr   *ngFor="let item of data$ | async"  >
-                                      <td class="text-primary"  >
-                                          <a [routerLink]="'/list/' + item.uid"> {{item.uid}} </a>
-                                      </td>
-                                        <td>
-                                          <a [routerLink]="'/list/' + item.uid">{{ item.name }}</a>                                     
-                                       </td>
-                                        <td>
-                                          <a [routerLink]="'/list/' + item.uid">   {{item.email}} </a>
+                                        <td class="text-primary"  >
+                                            <a> {{item.uid}} </a>
                                         </td>
-                                        <td>
-                                          <a [routerLink]="'/list/' + item.uid">  {{item.city}} </a>
-                                        </td>
-                                        <td>
-                                          <a [routerLink]="'/list/' + item.uid">    {{item.DOJ}} </a>
-                                        </td>
-                                    </tr>
+                                          <td>
+                                            <a>{{ item.amount }}</a>                                     
+                                         </td>
+                                          <td>
+                                            <a>   {{item.email}} </a>
+                                          </td>
+                                                                                  
+                                      </tr>
                                 </tbody>
                             </table>
                         </div>
@@ -188,5 +218,4 @@
             </div> -->
         </div>
     </div>
-  </div>
-  
+</div>

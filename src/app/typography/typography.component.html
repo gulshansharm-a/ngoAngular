@@ -1,98 +1,279 @@
-<div class="main-content">
-  <div class="container-fluid">
-    <div class="card">
-        <div class="card-header card-header-danger">
-            <h4 class="card-title">Material Dashboard Heading</h4>
-            <p class="card-category">Created using Roboto Font Family</p>
-        </div>
-        <div class="card-body">
-            <div id="typography">
-                <div class="card-title">
-                    <h2>Typography</h2>
+<form (ngSubmit)="uploadFormToDb()">
+   <!-- First form section -->
+    <div class="row" *ngIf="!second">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-danger">
+                    <h4 class="card-title">Student details {{ toadd }}</h4>
+                    <p class="card-category">Make sure all the information is
+                        correct</p>
                 </div>
-                <div class="row">
-                    <div class="tim-typo">
-                        <h1>
-                            <span class="tim-note">Header 1</span>The Life of Material Dashboard </h1>
-                    </div>
-                    <div class="tim-typo">
-                        <h2>
-                            <span class="tim-note">Header 2</span>The Life of Material Dashboard</h2>
-                    </div>
-                    <div class="tim-typo">
-                        <h3>
-                            <span class="tim-note">Header 3</span>The Life of Material Dashboard</h3>
-                    </div>
-                    <div class="tim-typo">
-                        <h4>
-                            <span class="tim-note">Header 4</span>The Life of Material Dashboard</h4>
-                    </div>
-                    <div class="tim-typo">
-                        <h5>
-                            <span class="tim-note">Header 5</span>The Life of Material Dashboard</h5>
-                    </div>
-                    <div class="tim-typo">
-                        <h6>
-                            <span class="tim-note">Header 6</span>The Life of Material Dashboard</h6>
-                    </div>
-                    <div class="tim-typo">
-                        <p>
-                            <span class="tim-note">Paragraph</span>
-                            I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at.</p>
-                    </div>
-                    <div class="tim-typo">
-                        <span class="tim-note">Quote</span>
-                        <blockquote class="blockquote">
-                            <p>
-                                I will be the leader of a company that ends up being worth billions of dollars, because I got the answers. I understand culture. I am the nucleus. I think that’s a responsibility that I have, to push possibilities, to show people, this is the level that things could be at.
-                            </p>
-                            <small>
-                                Kanye West, Musician
-                            </small>
-                        </blockquote>
-                    </div>
-                    <div class="tim-typo">
-                        <span class="tim-note">Muted Text</span>
-                        <p class="text-muted">
-                            I will be the leader of a company that ends up being worth billions of dollars, because I got the answers...
-                        </p>
-                    </div>
-                    <div class="tim-typo">
-                        <span class="tim-note">Primary Text</span>
-                        <p class="text-primary">
-                            I will be the leader of a company that ends up being worth billions of dollars, because I got the answers... </p>
-                    </div>
-                    <div class="tim-typo">
-                        <span class="tim-note">Info Text</span>
-                        <p class="text-info">
-                            I will be the leader of a company that ends up being worth billions of dollars, because I got the answers... </p>
-                    </div>
-                    <div class="tim-typo">
-                        <span class="tim-note">Success Text</span>
-                        <p class="text-success">
-                            I will be the leader of a company that ends up being worth billions of dollars, because I got the answers... </p>
-                    </div>
-                    <div class="tim-typo">
-                        <span class="tim-note">Warning Text</span>
-                        <p class="text-warning">
-                            I will be the leader of a company that ends up being worth billions of dollars, because I got the answers...
-                        </p>
-                    </div>
-                    <div class="tim-typo">
-                        <span class="tim-note">Danger Text</span>
-                        <p class="text-danger">
-                            I will be the leader of a company that ends up being worth billions of dollars, because I got the answers... </p>
-                    </div>
-                    <div class="tim-typo">
-                        <h2>
-                            <span class="tim-note">Small Tag</span>
-                            Header with small subtitle
-                            <br>
-                            <small>Use "small" tag for the headers</small>
-                        </h2>
+                <div class="card-body">
+                    <div>
+                        <div>
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput
+                                            placeholder="AadharCard (Default)"
+                                            disabled>
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-3">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput
+                                            placeholder="Aadhar Number"
+                                            [(ngModel)]="aadharNumber"
+                                            name="aadharNumber">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    Upload Aadhar <input type="file">
+                                    <div *ngIf="uploadProgress > 0">
+                                        Uploading: {{ uploadProgress }}%
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Add other form fields as needed -->
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Name"
+                                            type="text" [(ngModel)]="name"
+                                            name="name">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput
+                                            placeholder="Father name"
+                                            type="text" [(ngModel)]="fathernmae"
+                                            name="fathernmae">
+                                    </mat-form-field>
+                                </div>
+                                <!-- Add other form fields as needed -->
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput
+                                            placeholder="Date of Birth"
+                                            type="date" [(ngModel)]="DOB"
+                                            name="DOB">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput
+                                            placeholder="School name"
+                                            type="text" [(ngModel)]="school"
+                                            name="school">
+                                    </mat-form-field>
+                                </div>
+                                <!-- Add other form fields as needed -->
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Email"
+                                            type="text" [(ngModel)]="email"
+                                            name="email">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-6">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Password"
+                                            type="text" [(ngModel)]="password"
+                                            name="password">
+                                    </mat-form-field>
+                                </div>
+                                <!-- Add other form fields as needed -->
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput
+                                            placeholder="Mobile Number"
+                                            [(ngModel)]="mobile" type="text"
+                                            name="mobile">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="City"
+                                            type="text" [(ngModel)]="city"
+                                            name="city">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput placeholder="Area"
+                                            type="text" [(ngModel)]="area"
+                                            name="area">
+                                    </mat-form-field>
+                                </div>
+                                <!-- Add other form fields as needed -->
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput [(ngModel)]="pincode"
+                                            placeholder="Postal Code"
+                                            type="text" name="pincode">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <mat-form-field class="example-full-width">
+                                        <input matInput
+                                            placeholder="Village/Town"
+                                            [(ngModel)]="village_town"
+                                            type="text" name="village_town">
+                                    </mat-form-field>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="dropdown"
+                                        style="margin-left: 10px;">
+                                        <button
+                                            class="btn btn-secondary dropdown-toggle"
+                                            type="button"
+                                            id="dropdownMenuButton"
+                                            data-toggle="dropdown"
+                                            aria-haspopup="true"
+                                            aria-expanded="false">
+                                            Select State
+                                        </button>
+                                        <div class="dropdown-menu"
+                                            aria-labelledby="dropdownMenuButton">
+                                            <a class="dropdown-item">Action</a>
+                                            <a class="dropdown-item">Another
+                                                action</a>
+                                            <a class="dropdown-item">Something
+                                                else here</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <input type="file"
+                                style="margin-top: 20px; position: absolute; bottom: 10px;">
+                            <div *ngIf="uploadProgress > 0">
+                                Uploading: {{ uploadProgress }}%
+                            </div>
+
+                            <div class="row">
+                                <!-- Add other form fields as needed -->
+                            </div>
+
+                            <button mat-raised-button (click)="setSecond()"   class="btn btn-danger pull-right">Next</button>
+
+                            <div class="clearfix"></div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+
+    <!-- Second form section -->
+    <div>
+        <div class="row" *ngIf="second">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header card-header-danger">
+                    <h4 class="card-title">Guardians Details and Documents {{
+                        toadd }}</h4>
+                    <p class="card-category">Make sure all the information is
+                        correct</p>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <mat-form-field class="example-full-width">
+                                <input matInput [(ngModel)]="fatherAddhar"
+                                    placeholder="Father Aadhar Number"
+                                    name="fatherAddhar">
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-6">
+                            <mat-form-field class="example-full-width">
+                                <input matInput type="date"
+                                    placeholder="Father Date of birth"
+                                    [(ngModel)]="fatherDob" name="fatherDob">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <!-- Add other form fields as needed -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <mat-form-field class="example-full-width">
+                                <input matInput
+                                    placeholder="Mother Aadhar number"
+                                    [(ngModel)]="motherAadhar"
+                                    name="motherAadhar">
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-6">
+                            <mat-form-field class="example-full-width">
+                                <input matInput
+                                    placeholder="Mother Date of birth"
+                                    type="date" [(ngModel)]="motherDob"
+                                    name="motherDob">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <!-- Add other form fields as needed -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Father PAN number"
+                                    type="text" [(ngModel)]="fatherPAN"
+                                    name="fatherPAN">
+                            </mat-form-field>
+                        </div>
+                        <div class="col-md-6">
+                            <mat-form-field class="example-full-width">
+                                <input matInput placeholder="Mother PAN number"
+                                    type="text" [(ngModel)]="motherPAN"
+                                    name="motherPAN">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                    <!-- Add other form fields as needed -->
+                    <div class="row">
+                        <div class="col-md-5" style="margin-left: 20px;">
+                            <b>Student image</b>
+                            <img src="../../assets/img/200200image.png"
+                                class="rounded float-left" alt="...">
+                            <input type="file" name="studentImage">
+                        </div>
+                        <div class="col-md-5" style="margin-right: 20px;">
+                            <img src="../../assets/img/200200image.png"
+                                class="rounded float-right" alt="...">
+                            <b>Family image</b>
+                            <input type="file" name="familyImage">
+                        </div>
+                    </div>
+                    <!-- Add other form fields as needed -->
+                    <div class="row">
+                        <div class="col-md-6">
+                            <b>All documents</b>
+                            <input type="file" name="allDocuments">
+                        </div>
+                    </div>
+                    <!-- Add other form fields as needed -->
+                    <button mat-raised-button type="submit" class="btn btn-danger pull-right">Upload</button>
+
+                    <button mat-raised-button type="button"
+                        (click)="unsetSecond()" class="btn btn-safe pull-right">Back</button>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</form>
